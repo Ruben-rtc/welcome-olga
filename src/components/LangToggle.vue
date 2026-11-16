@@ -31,7 +31,7 @@ const options = [
 .lang-anchor {
   position: sticky;
   top: 0;
-  z-index: 5;
+  z-index: 30; /* au-dessus de l'écran d'entrée */
   height: 0;
   display: flex;
   justify-content: flex-end;
@@ -40,14 +40,15 @@ const options = [
   display: flex;
   gap: 4px;
   height: 44px;
-  padding: 3px;
+  padding: 4px;
   margin: 14px 16px 0 0;
   border-radius: 999px;
   background: var(--plum);
 }
 .lang__btn {
   min-width: 48px;
-  height: 44px;
+  height: 100%;
+  padding: 0 10px;
   border: 0;
   border-radius: 999px;
   font: 700 14px var(--font);

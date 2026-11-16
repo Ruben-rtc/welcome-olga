@@ -1,6 +1,5 @@
 <script setup>
-import narcisses from '../assets/photos/narcisses.jpg'
-import { photoCredits } from '../data/content.js'
+import hug from '../assets/photos/hug.jpg'
 
 defineProps({
   t: { type: Object, required: true },
@@ -11,22 +10,18 @@ defineProps({
 <template>
   <section class="outro">
     <div class="outro__photo">
-      <img class="zoom" :src="narcisses" alt="" loading="lazy" />
+      <img class="zoom" :src="hug" alt="" loading="lazy" />
     </div>
     <div class="outro__body">
       <h2 v-reveal class="outro__title">{{ t.outro }}</h2>
       <p class="outro__sign">{{ t.sign }}</p>
-      <div class="rainbow" aria-hidden="true">
-        <span v-for="day in days" :key="day.num" :style="{ background: day.color }"></span>
-      </div>
-      <p class="outro__credits">{{ photoCredits }}</p>
     </div>
   </section>
 </template>
 
 <style scoped>
 .outro {
-  background: var(--plum);
+  background: linear-gradient(180deg, var(--pink) 0%, #ff9a1f 100%);
   color: #fff;
 }
 .outro__photo {
@@ -38,6 +33,7 @@ defineProps({
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 60% 30%;
 }
 .outro__body {
   display: flex;
@@ -57,21 +53,7 @@ defineProps({
   margin: 0;
   font-size: 17px;
   line-height: 1.5;
-  color: #f1eaff;
-}
-.rainbow {
-  display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 6px;
-}
-.rainbow span {
-  height: 8px;
-  border-radius: 999px;
-}
-.outro__credits {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #d9ccf5;
+  color: #fff;
+  font-weight: 700;
 }
 </style>

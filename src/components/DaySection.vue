@@ -3,6 +3,9 @@ import { computed } from 'vue'
 
 const props = defineProps({
   day: { type: Object, required: true },
+  nextColor: { type: String, required: true },
+  isToday: { type: Boolean, default: false },
+  todayLabel: { type: String, default: '' },
   lang: { type: String, required: true },
 })
 
@@ -11,7 +14,9 @@ const text = computed(() => props.day[props.lang])
 </script>
 
 <template>
-  <section :id="`day-${day.num}`" class="day" :style="{ background: day.color }">
+  <section :id="`day-${day.num}`" class="day"
+    :style="{ background: `linear-gradient(180deg, ${day.color} 0%, ${day.color} 30%, ${nextColor} 100%)` }"
+  >
     <div class="day__media">
       <div class="day__photo">
         <img
@@ -26,7 +31,10 @@ const text = computed(() => props.day[props.lang])
     </div>
 
     <div class="day__body">
-      <p class="day__date">{{ text.date }}</p>
+      <p class="day__date">
+        {{ text.date }}
+        <span v-if="isToday" class="day__today">{{ todayLabel }}</span>
+      </p>
       <h2 class="day__title">{{ text.title }}</h2>
 
       <article v-for="event in text.events" :key="event.title" v-reveal class="event">
@@ -79,12 +87,22 @@ const text = computed(() => props.day[props.lang])
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+.day__today {
+  margin-left: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--plum);
+  color: var(--yellow);
+  letter-spacing: 0.04em;
+}
 .day__title {
   margin: 0;
   font-weight: 900;
   font-size: 36px;
   line-height: 1.05;
   text-transform: uppercase;
+  color: #fff;
+  text-shadow: 3px 3px 0 var(--plum);
 }
 
 .event {

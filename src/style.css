@@ -2,11 +2,13 @@
 
 :root {
   --font: 'Montserrat', system-ui, sans-serif;
+  /* Couleur sombre du site (texte, pastilles, ombres). */
   --plum: #2a0f4a;
   --purple: #5b1fd1;
   --pink: #ff2e93;
   --yellow: #ffd23f;
-  --glow: 0 0 22px rgba(255, 138, 31, 0.9);
+  /* Ombre « autocollant » pour les gros titres blancs */
+  --glow: 4px 4px 0 var(--plum);
 }
 
 *,
@@ -21,7 +23,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--plum);
+  background: #ffe3f1;
   font-family: var(--font);
   font-weight: 500;
   color: var(--plum);
@@ -42,7 +44,7 @@ a:focus-visible {
 .page {
   max-width: 480px;
   margin: 0 auto;
-  background: var(--purple);
+  background: var(--pink);
   overflow-x: clip;
 }
 

@@ -3,12 +3,12 @@
 // activité, il suffit de modifier ce fichier.
 
 import geneva from '../assets/photos/geneva.jpg'
-import leman from '../assets/photos/leman.jpg'
+import morges from '../assets/photos/morges.jpg'
 import lausanne from '../assets/photos/lausanne.jpg'
 import lavaux from '../assets/photos/lavaux.jpg'
-import italy from '../assets/photos/italy.jpg'
-import montreuxNoel from '../assets/photos/montreux-noel.jpg'
-import montreux from '../assets/photos/montreux.jpg'
+import milan from '../assets/photos/milan.jpg'
+import gruyeres from '../assets/photos/gruyeres.jpg'
+import church from '../assets/photos/church.jpg'
 
 export const ui = {
   uk: {
@@ -16,15 +16,22 @@ export const ui = {
     place: 'Морж · Швейцарія · 17–23 листопада',
     welcome1: 'Ласкаво просимо,',
     welcome2: 'Ольго!',
-    intro:
-      'Нарешті разом! Ми підготували для вас цілий тиждень у Швейцарії. Гортайте вниз — день за днем.',
-    photoAlt: 'Спільне фото на терасі',
+    introRoute: 'Київ → Женева',
+    countdownLabel: 'До приземлення',
+    countdownUnits: ['дн', 'год', 'хв', 'с'],
+    countdownDone: 'Ви вже у Швейцарії!',
+    today: 'Сьогодні',
+    introBtn: 'Приземлитися',
+    introHint: 'Натисніть, щоб увійти',
+    photoAlt: 'Ольга',
+    moments: 'Наші моменти',
+    momentsAlt: 'Спільне фото',
     month: 'лист.',
     arrivalLabel: 'Приїзд · вівторок',
     arrivalPlace: 'Зустрічаємо вас в аеропорту Женеви',
     scroll: 'Гортайте вниз',
     outro: 'Чекаємо на вас!',
-    sign: 'З любов’ю — Катерина, Рубен і Льолік',
+    sign: 'З любов’ю — Катерина і Рубен',
     langLabel: 'Мова',
   },
   en: {
@@ -32,25 +39,36 @@ export const ui = {
     place: 'Morges · Switzerland · 17–23 November',
     welcome1: 'Welcome,',
     welcome2: 'Olga!',
-    intro:
-      'Together at last! We have planned a whole week in Switzerland for you. Scroll down — day by day.',
-    photoAlt: 'Photo together on the terrace',
+    introRoute: 'Kyiv → Geneva',
+    countdownLabel: 'Landing in',
+    countdownUnits: ['d', 'h', 'min', 's'],
+    countdownDone: 'You are in Switzerland!',
+    today: 'Today',
+    introBtn: 'Land',
+    introHint: 'Tap to enter',
+    photoAlt: 'Olga',
+    moments: 'Our moments',
+    momentsAlt: 'Photo together',
     month: 'Nov',
     arrivalLabel: 'Arrival · Tuesday',
     arrivalPlace: 'We meet you at Geneva Airport',
     scroll: 'Scroll down',
     outro: 'We can’t wait to see you!',
-    sign: 'With love — Kateryna, Ruben & Liolik',
+    sign: 'With love — Kateryna & Ruben',
     langLabel: 'Language',
   },
 }
+
+// Atterrissage d'Olga à Genève (heure suisse) : cible du compte à rebours.
+export const arrival = '2026-11-17T19:00:00+01:00'
 
 // Un événement = { time, title, note? }
 export const days = [
   {
     num: '17',
-    color: '#FF2E93',
+    color: '#FF5A4E',
     photo: geneva,
+    photoPosition: '50% 54%',
     uk: {
       dow: 'Вт',
       date: 'Вівторок, 17 листопада',
@@ -72,8 +90,9 @@ export const days = [
   },
   {
     num: '18',
-    color: '#FF8A1F',
-    photo: leman,
+    color: '#FF9A1F',
+    photo: morges,
+    photoPosition: '50% 55%',
     uk: {
       dow: 'Ср',
       date: 'Середа, 18 листопада',
@@ -82,6 +101,7 @@ export const days = [
         { time: '10:00', title: 'У Катерини зустріч', note: 'Спокійний ранок' },
         { time: '12:00–14:00', title: 'Прогулянка з Льоліком', note: 'Гуляємо Моржем' },
         { time: 'Після обіду', title: 'Вільний час', note: 'Аутлет в Обонні або замок Грюєр' },
+        { time: 'Вечір', title: 'Аперитив із Коралін' },
       ],
     },
     en: {
@@ -92,13 +112,15 @@ export const days = [
         { time: '10:00', title: 'Kateryna has an appointment', note: 'A slow morning' },
         { time: '12:00–14:00', title: 'Walk with Liolik', note: 'Around Morges' },
         { time: 'Afternoon', title: 'Free time', note: 'Aubonne outlet or Gruyères castle' },
+        { time: 'Evening', title: 'Apéro with Coraline' },
       ],
     },
   },
   {
     num: '19',
-    color: '#FFD23F',
+    color: '#FFD93F',
     photo: lausanne,
+    photoPosition: '50% 58%',
     uk: {
       dow: 'Чт',
       date: 'Четвер, 19 листопада',
@@ -122,8 +144,9 @@ export const days = [
   },
   {
     num: '20',
-    color: '#3DDC84',
+    color: '#A8E63D',
     photo: lavaux,
+    photoPosition: '50% 65%',
     uk: {
       dow: 'Пт',
       date: 'П’ятниця, 20 листопада',
@@ -151,46 +174,62 @@ export const days = [
   },
   {
     num: '21',
-    color: '#19C2D1',
-    photo: italy,
+    color: '#2ED9C3',
+    photo: milan,
+    photoPosition: '50% 42%',
     uk: {
       dow: 'Сб',
       date: 'Субота, 21 листопада',
-      title: 'Італія',
+      title: 'Італія і Монтре',
       events: [
         {
-          time: 'Увесь день',
+          time: 'Удень',
           title: 'Їдемо на шопінг до Італії',
           note: 'Разом із Катериною та Рубеном',
         },
+        {
+          time: 'Дорогою назад',
+          title: 'Різдвяний ярмарок у Монтре',
+          note: 'Зупинка дорогою до Сен-Лежьє',
+        },
+        { time: 'Ніч', title: 'Ночуємо в Сен-Лежьє', note: 'У домі Рубена' },
       ],
     },
     en: {
       dow: 'Sat',
       date: 'Saturday, 21 November',
-      title: 'Italy',
+      title: 'Italy & Montreux',
       events: [
         {
-          time: 'All day',
+          time: 'Daytime',
           title: 'Shopping trip to Italy',
           note: 'Together with Kateryna and Ruben',
         },
+        {
+          time: 'On the way back',
+          title: 'Montreux Christmas market',
+          note: 'A stop on the way to St-Légier',
+        },
+        { time: 'Night', title: 'Sleepover in St-Légier', note: 'At Ruben’s house' },
       ],
     },
   },
   {
     num: '22',
-    color: '#6FB6FF',
-    photo: montreuxNoel,
-    photoPosition: '50% 60%',
+    color: '#5BB8FF',
+    photo: church,
     uk: {
       dow: 'Нд',
       date: 'Неділя, 22 листопада',
       title: 'Неділя разом',
       events: [
-        { time: '1', title: 'Церква' },
-        { time: '2', title: 'Термальні купальні Лаве-ле-Бен', note: 'Les Bains de Lavey' },
-        { time: '3', title: 'Різдвяний ярмарок у Монтре' },
+        { time: '09:45', title: 'Церква' },
+        { time: '12:00', title: 'Обід із друзями', note: 'У Блоне' },
+        {
+          time: '15:00–20:00',
+          title: 'Термальні купальні Лаве-ле-Бен',
+          note: 'Les Bains de Lavey',
+        },
       ],
     },
     en: {
@@ -198,16 +237,17 @@ export const days = [
       date: 'Sunday, 22 November',
       title: 'Sunday together',
       events: [
-        { time: '1', title: 'Church' },
-        { time: '2', title: 'Les Bains de Lavey', note: 'Thermal baths' },
-        { time: '3', title: 'Montreux Christmas market' },
+        { time: '09:45', title: 'Church' },
+        { time: '12:00', title: 'Lunch with friends', note: 'In Blonay' },
+        { time: '15:00–20:00', title: 'Les Bains de Lavey', note: 'Thermal baths' },
       ],
     },
   },
   {
     num: '23',
-    color: '#C9B3FF',
-    photo: montreux,
+    color: '#C9A0FF',
+    photo: gruyeres,
+    photoPosition: '47% 50%',
     uk: {
       dow: 'Пн',
       date: 'Понеділок, 23 листопада',
@@ -230,6 +270,3 @@ export const days = [
     },
   },
 ]
-
-export const photoCredits =
-  'Photos: Wikimedia Commons, CC BY-SA 4.0 — Sdnegel, KaiBorgeest, Gzzz, Pauledge1978, Steffen Schmitz, Kerstin Sonnekalb (WMCH), Maude Rion, Giles Laurent.'

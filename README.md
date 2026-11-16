@@ -69,4 +69,15 @@ Un site GitHub Pages est **public** : toute personne qui a le lien peut le voir.
 
 ## Crédits photo
 
-Photos de lieux : Wikimedia Commons, licence CC BY-SA 4.0 — Sdnegel, KaiBorgeest, Gzzz, Pauledge1978, Steffen Schmitz, Kerstin Sonnekalb (WMCH), Maude Rion, Giles Laurent.
+Les crédits sont réunis ici ; le site lui-même n'en affiche pas.
+
+| Jour | Photo | Auteur | Source / licence |
+| --- | --- | --- | --- |
+| Mardi | Hublot, aéroport de Genève | Anton Shakirov | [Unsplash](https://unsplash.com/photos/white-plane-on-runway-MnEZnSQJDxw), licence Unsplash |
+| Mercredi | Temple de Morges | Tim Bernhard | [Unsplash](https://unsplash.com/photos/a-city-street-with-a-clock-tower-in-the-background-IrP6hR4TcWo), licence Unsplash |
+| Jeudi | Toits de Lausanne | Wassim Chouak | [Unsplash](https://unsplash.com/photos/houses-near-body-of-water-during-daytime-UEn6D23cM8o), licence Unsplash |
+| Vendredi | Verre de vin dans les vignes | Hector Uribe | [Unsplash](https://unsplash.com/photos/wine-glass-sits-on-a-table-overlooking-a-vineyard-cde6dorxX3w), licence Unsplash |
+| Dimanche | Église | Akira Hojo | Unsplash (`_86u_Y0oAaM`), licence Unsplash |
+| Lundi | Gruyères | Rich Martello | [Unsplash](https://unsplash.com/photos/a-scenic-view-of-a-town-with-a-castle-in-the-background-W1JEOEMZaT4), licence Unsplash |
+
+Les autres photos (Olga, famille, Milan) sont des photos personnelles.
