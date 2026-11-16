@@ -9,7 +9,8 @@ defineProps({
 const emit = defineEmits(['landing', 'done'])
 
 // Écran d'entrée : on est dans les nuages, on touche l'écran pour « atterrir ».
-// Au clic, les nuages s'écartent, l'avion part, puis l'écran disparaît.
+// Au clic, on descend à travers les nuages (ils filent vers le haut, les plus
+// proches plus vite), l'avion pique du nez, puis l'écran disparaît.
 const leaving = ref(false)
 
 function enter() {
@@ -39,7 +40,13 @@ const clouds = [
       :key="i"
       class="cloud"
       :class="`cloud--${cloud.side}`"
-      :style="{ top: cloud.top, left: cloud.left, width: cloud.width, opacity: cloud.opacity }"
+      :style="{
+        top: cloud.top,
+        left: cloud.left,
+        width: cloud.width,
+        opacity: cloud.opacity,
+        transitionDelay: `${(clouds.length - 1 - i) * 70}ms`,
+      }"
       aria-hidden="true"
     >
       <svg viewBox="0 0 200 100" :style="{ animationDuration: cloud.drift }">
@@ -104,7 +111,7 @@ const clouds = [
 
 .cloud {
   position: absolute;
-  transition: transform 1.3s cubic-bezier(0.5, 0, 0.8, 0.4);
+  transition: transform 1.25s cubic-bezier(0.55, 0, 0.85, 0.35);
 }
 .cloud svg {
   display: block;
@@ -112,10 +119,10 @@ const clouds = [
   animation: drift ease-in-out infinite alternate;
 }
 .intro--leaving .cloud--left {
-  transform: translateX(-140vw);
+  transform: translate(-35vw, -150vh) scale(1.8);
 }
 .intro--leaving .cloud--right {
-  transform: translateX(140vw);
+  transform: translate(35vw, -150vh) scale(1.8);
 }
 @keyframes drift {
   from {
@@ -152,7 +159,11 @@ const clouds = [
   transform: rotate(-6deg);
   animation: fly 3s ease-in-out infinite;
   filter: drop-shadow(5px 6px 0 rgba(42, 15, 74, 0.25));
-  transition: translate 1.2s cubic-bezier(0.6, 0, 0.9, 0.5);
+  transition:
+    translate 1.2s cubic-bezier(0.5, 0, 0.8, 0.5),
+    rotate 0.8s ease,
+    scale 1.2s ease-in,
+    opacity 0.4s ease 0.75s;
 }
 @keyframes fly {
   50% {
@@ -160,7 +171,10 @@ const clouds = [
   }
 }
 .intro--leaving .plane {
-  translate: 130vw 20vh;
+  translate: 22vw 34vh;
+  rotate: 16deg;
+  scale: 0.45;
+  opacity: 0;
 }
 .intro__btn {
   padding: 16px 34px;
@@ -212,6 +226,8 @@ const clouds = [
   }
   .intro--leaving .plane {
     translate: none;
+    rotate: none;
+    scale: none;
   }
 }
 </style>

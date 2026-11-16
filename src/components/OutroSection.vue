@@ -9,7 +9,7 @@ defineProps({
 
 <template>
   <section class="outro">
-    <div class="outro__photo">
+    <div v-inview class="outro__photo mask">
       <img class="zoom" :src="hug" alt="" loading="lazy" />
     </div>
     <div class="outro__body">

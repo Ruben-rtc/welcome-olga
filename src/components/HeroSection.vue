@@ -15,7 +15,7 @@ defineProps({
   <section class="hero">
     <p class="hero__place">{{ t.place }}</p>
 
-    <div class="hero__photo">
+    <div v-inview class="hero__photo">
       <img class="zoom" :src="olgaPhoto" :alt="t.photoAlt" />
     </div>
 

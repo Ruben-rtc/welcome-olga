@@ -24,11 +24,13 @@ const lang = ref(readSavedLang())
 const t = computed(() => ui[lang.value])
 
 // Écran d'entrée dans les nuages : la page ne défile pas tant qu'on n'est pas « entré ».
-// Il ne s'affiche qu'à la première visite ; ajouter ?intro à l'adresse pour le revoir.
+// Il s'affiche à chaque visite jusqu'à l'atterrissage, puis seulement si on ne l'a
+// encore jamais vu ; ajouter ?intro à l'adresse pour le revoir.
 const INTRO_KEY = 'welcome-olga-entered'
 function introAlreadySeen() {
   try {
     if (new URLSearchParams(location.search).has('intro')) return false
+    if (Date.now() < new Date(arrival).getTime()) return false
     return localStorage.getItem(INTRO_KEY) === '1'
   } catch {
     return false
@@ -41,8 +43,11 @@ watchEffect(() => {
 })
 
 // Au clic sur « atterrir » : confettis, et on retient que l'entrée a été vue.
+// `landed` lance l'apparition en cascade du haut de page.
+const landed = ref(returning)
 const confetti = ref(false)
 function onLanding() {
+  landed.value = true
   confetti.value = true
   setTimeout(() => (confetti.value = false), 5000)
   try {
@@ -86,7 +91,11 @@ watchEffect(() => {
 </script>
 
 <template>
-  <main class="page">
+  <main
+    class="page"
+    :class="{ 'page--landed': landed }"
+    :style="{ '--hero-delay': returning ? '0s' : '0.85s' }"
+  >
     <IntroScreen
       v-if="!entered"
       :t="t"

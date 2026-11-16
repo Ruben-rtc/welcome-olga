@@ -17,8 +17,8 @@ const text = computed(() => props.day[props.lang])
   <section :id="`day-${day.num}`" class="day"
     :style="{ background: `linear-gradient(180deg, ${day.color} 0%, ${day.color} 30%, ${nextColor} 100%)` }"
   >
-    <div class="day__media">
-      <div class="day__photo">
+    <div v-inview class="day__media">
+      <div class="day__photo mask">
         <img
           class="zoom"
           :src="day.photo"
@@ -35,9 +35,15 @@ const text = computed(() => props.day[props.lang])
         {{ text.date }}
         <span v-if="isToday" class="day__today">{{ todayLabel }}</span>
       </p>
-      <h2 class="day__title">{{ text.title }}</h2>
+      <h2 v-reveal class="day__title">{{ text.title }}</h2>
 
-      <article v-for="event in text.events" :key="event.title" v-reveal class="event">
+      <article
+        v-for="(event, i) in text.events"
+        :key="event.title"
+        v-reveal
+        class="event"
+        :style="{ transitionDelay: `${i * 110}ms` }"
+      >
         <span class="event__time">{{ event.time }}</span>
         <h3 class="event__title">{{ event.title }}</h3>
         <p v-if="event.note" class="event__note">{{ event.note }}</p>

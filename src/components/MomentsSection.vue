@@ -23,7 +23,7 @@ const photos = [
       class="moments__item"
       :class="`moments__item--${photo.side}`"
     >
-      <figure class="polaroid" :style="{ transform: `rotate(${photo.tilt})` }">
+      <figure class="polaroid" :style="{ '--tilt': photo.tilt }">
         <img :src="photo.src" :alt="t.momentsAlt" loading="lazy" />
       </figure>
     </div>
@@ -61,6 +61,18 @@ const photos = [
   border-radius: 6px;
   background: #fff;
   box-shadow: 8px 8px 0 var(--plum);
+  /* Avant l'apparition : plus grand et très penché, comme lâché sur la table. */
+  transform: rotate(calc(var(--tilt) * -5)) scale(1.18);
+  transition: transform 0.8s cubic-bezier(0.3, 1.5, 0.5, 1) 0.1s;
+}
+.is-visible .polaroid {
+  transform: rotate(var(--tilt));
+}
+@media (prefers-reduced-motion: reduce) {
+  .polaroid {
+    transform: rotate(var(--tilt));
+    transition: none;
+  }
 }
 .polaroid img {
   display: block;
