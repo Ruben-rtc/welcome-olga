@@ -18,7 +18,7 @@ const text = computed(() => props.day[props.lang])
     :style="{ background: `linear-gradient(180deg, ${day.color} 0%, ${day.color} 30%, ${nextColor} 100%)` }"
   >
     <div v-inview class="day__media">
-      <div class="day__photo mask">
+      <div class="day__photo">
         <img
           class="zoom"
           :src="day.photo"

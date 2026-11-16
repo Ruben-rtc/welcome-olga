@@ -92,7 +92,7 @@ export const days = [
     num: '18',
     color: '#FF9A1F',
     photo: morges,
-    photoPosition: '50% 55%',
+    photoPosition: '50% 40%',
     uk: {
       dow: 'Ср',
       date: 'Середа, 18 листопада',

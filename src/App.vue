@@ -71,6 +71,23 @@ function findToday() {
 }
 const today = findToday()
 
+// Une fois la page chargée, on précharge les photos des jours une par une, dans
+// l'ordre, pour qu'elles soient déjà là quand on fait défiler.
+function preloadDayPhotos() {
+  let i = 0
+  const next = () => {
+    if (i >= days.length) return
+    const img = new Image()
+    img.onload = img.onerror = next
+    img.src = days[i++].photo
+  }
+  next()
+}
+onMounted(() => {
+  if (document.readyState === 'complete') preloadDayPhotos()
+  else window.addEventListener('load', preloadDayPhotos, { once: true })
+})
+
 // Visites suivantes pendant la semaine : on ouvre directement sur le jour en cours.
 onMounted(() => {
   if (returning && today && today !== days[0].num && !location.hash) {

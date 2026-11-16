@@ -16,7 +16,7 @@ defineProps({
     <p class="hero__place">{{ t.place }}</p>
 
     <div v-inview class="hero__photo">
-      <img class="zoom" :src="olgaPhoto" :alt="t.photoAlt" />
+      <img class="zoom" :src="olgaPhoto" :alt="t.photoAlt" fetchpriority="high" />
     </div>
 
     <!-- Titre défilant sur toute la largeur.
