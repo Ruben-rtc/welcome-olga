@@ -1,0 +1,120 @@
+/* Styles globaux : couleurs, typo et animations de défilement. */
+
+:root {
+  --font: 'Montserrat', system-ui, sans-serif;
+  --plum: #2a0f4a;
+  --purple: #5b1fd1;
+  --pink: #ff2e93;
+  --yellow: #ffd23f;
+  --glow: 0 0 22px rgba(255, 138, 31, 0.9);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--plum);
+  font-family: var(--font);
+  font-weight: 500;
+  color: var(--plum);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* Colonne centrée : pleine largeur sur téléphone, 480px max sur grand écran. */
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--purple);
+  overflow-x: clip;
+}
+
+/* ---------- Animations ---------- */
+
+/* v-reveal (voir directives/reveal.js) : montée en fondu à l'entrée dans l'écran. */
+.reveal {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1.3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes slide {
+  from {
+    transform: translateX(-70%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.bob {
+  animation: bob 1.6s ease-in-out infinite;
+}
+
+/* Animations pilotées par le défilement (Chrome, Edge, Safari récents).
+   Ailleurs, les photos et les numéros restent simplement fixes. */
+@supports (animation-timeline: view()) {
+  .zoom {
+    animation: zoom linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 70%;
+  }
+  .num {
+    animation: slide linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 45%;
+  }
+}
+
+/* Respecte le réglage « réduire les animations » du téléphone. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .bob,
+  .zoom,
+  .num {
+    animation: none;
+  }
+}
